@@ -1,4 +1,4 @@
 SunTracker
 ==========
 
-An AR iOS app that track and display the sun's position on the screen
+An AR iOS app that tracks and displays the sun's position on the screen
