@@ -24,7 +24,7 @@
 
 @implementation STKSunTracker
 
-#pragma mark - Initialization
+#pragma mark - Initialization and life cycle
 
 - (id)init{
     self = [super init];
@@ -56,8 +56,10 @@
     if ([_motionManager isGyroAvailable]) {
         [_motionManager setShowsDeviceMovementDisplay:YES];
         [_motionManager setDeviceMotionUpdateInterval:MOTION_UPDATE_INTERVAL];
+        
+        __weak typeof(self) weakSelf = self;
         [_motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical toQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
-            if (!error) [self deviceMotionUpdated:motion];
+            if (!error && weakSelf) [weakSelf deviceMotionUpdated:motion];
         }];
         
     }else{
@@ -65,7 +67,28 @@
     }
 }
 
-#pragma mark - Custom setter
+- (void)dealloc{
+    [self stopServices];
+}
+
+- (void)stopServices{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager setDelegate:nil];
+    [self.motionManager stopDeviceMotionUpdates];
+}
+
+#pragma mark - Custom setters
+
+- (void)setDelegate:(id<STKSunTrackerDelegate>)delegate{
+    if (!delegate) {
+        [self stopServices];
+        _delegate = nil;
+    }else if(delegate != _delegate){
+        _delegate = delegate;
+        [self initialize];
+    }
+}
 
 - (void)setScreenSize:(CGSize)screenSize{
     _screenSize = screenSize;
@@ -113,7 +136,11 @@
 }
 
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager{
-    return YES;
+    
+    if(!manager.heading) return YES;
+    else if( manager.heading.headingAccuracy < 0 ) return YES;
+    else if( manager.heading.headingAccuracy > 5 ) return YES;
+    else return NO;
 }
 
 #pragma mark - CMMotionManager callback

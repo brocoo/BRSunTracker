@@ -56,7 +56,5 @@ void createProjectionMatrix(mat4f_t mout, float fovy, float aspect, float zNear,
 void multiplyMatrixAndVector(vec4f_t vout, const mat4f_t m, const vec4f_t v);
 void multiplyMatrixAndMatrix(mat4f_t c, const mat4f_t a, const mat4f_t b);
 void transformFromCMRotationMatrix(vec4f_t mout, const CMRotationMatrix *m);
-void ecefToEnu(double lat, double lon, double x, double y, double z, double xr, double yr, double zr, double *e, double *n, double *u);
-void latLonToEcef(double lat, double lon, double alt, double *x, double *y, double *z);
 
 #endif

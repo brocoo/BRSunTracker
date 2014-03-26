@@ -7,14 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "STKSunTracker.h"
+
+@class STKSunTrackerView;
+
+@protocol STKSunTrackerViewDelegate <NSObject>
+
+@optional
+- (void)sunTrackerViewGotFocus:(STKSunTrackerView *)sunTrackerView;
+- (void)sunTrackerViewLostFocus:(STKSunTrackerView *)sunTrackerView;
+
+@end
 
 typedef NS_ENUM(NSUInteger, STKSunState){
-    STKSunStateUnlocked,
-    STKSunStateLocked
+    STKSunStateUnknown,
+    STKSunStateGotFocus,
+    STKSunStateLostFocus
 };
 
 @interface STKSunTrackerView : UIView
 
-@property (assign, nonatomic)   STKSunState     sunState;
+@property (assign, nonatomic, readonly)     STKSunState     sunState;
+@property (strong, nonatomic)   IBOutlet    UIView          *sunView;
+@property (assign, nonatomic)               BOOL            displayCameraPreview;
+@property (assign, nonatomic)               BOOL            showDefaultSunView;
 
 @end
