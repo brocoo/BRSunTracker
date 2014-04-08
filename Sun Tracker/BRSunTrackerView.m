@@ -100,7 +100,7 @@
 
 - (void)sunTrackerVectorUpdated:(BRSunTrackingVector)vector{
     
-    CGPoint actualCenter = CGPointMake(vector.x - _sunContainerView.frame.size.width/2, vector.y - _sunContainerView.frame.size.height/2);
+    CGPoint actualCenter = CGPointMake(vector.x - _sunContainerView.bounds.size.width/2, vector.y - _sunContainerView.bounds.size.height/2);
     double distance = CGPointDistance(CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)), actualCenter);
     
     if (_sunState == BRSunStateGotFocus) {
