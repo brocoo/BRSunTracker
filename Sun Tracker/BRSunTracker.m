@@ -1,16 +1,16 @@
 //
-//  STKSunTracker.m
+//  BRSunTracker.m
 //  Sun Tracker
 //
 //  Created by Julien Ducret on 01/02/2014.
 //  Copyright (c) 2014 Julien Ducret. All rights reserved.
 //
 
-#import "STKSunTracker.h"
+#import "BRSunTracker.h"
 #import <CoreMotion/CoreMotion.h>       // Gyroscope access
 #import <CoreLocation/CoreLocation.h>   // Location access
 
-@interface STKSunTracker () <CLLocationManagerDelegate> {
+@interface BRSunTracker () <CLLocationManagerDelegate> {
     vec4f_t _sunPositionVector;
     mat4f_t _projectionTransform;
 }
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation STKSunTracker
+@implementation BRSunTracker
 
 #pragma mark - Initialization and life cycle
 
@@ -80,7 +80,7 @@
 
 #pragma mark - Custom setters
 
-- (void)setDelegate:(id<STKSunTrackerDelegate>)delegate{
+- (void)setDelegate:(id<BRSunTrackerDelegate>)delegate{
     if (!delegate) {
         [self stopServices];
         _delegate = nil;
@@ -119,7 +119,7 @@
     
     // Project the rotated sun coordinates on the screen
     // (z value indicates weither the sun is in front or behind)
-    STKSunTrackingVector sunTrackingVector;
+    BRSunTrackingVector sunTrackingVector;
     sunTrackingVector.x = ((projectedSunCoordinates[0] / projectedSunCoordinates[3] + 1.0f) * 0.5f) * _screenSize.width;
     sunTrackingVector.y = _screenSize.height - _screenSize.height*((projectedSunCoordinates[1] / projectedSunCoordinates[3] + 1.0f) * 0.5f);
     sunTrackingVector.z = projectedSunCoordinates[2];
@@ -159,7 +159,7 @@
     CLLocationCoordinate2D coordinates = location.coordinate;
     
     // Compute spherical coordinates (azimuth & zenith angle) of the sun from location, time zone, date and current time
-    STKSunPosition sunPosition = [self sunPositionForCoordinate:coordinates];
+    BRSunPosition sunPosition = [self sunPositionForCoordinate:coordinates];
     
     // Translate the zenith angle from 'sun - Z axis(up)' to 'sun - XY axis(ground)'
     sunPosition.zenithAngle = 90 - sunPosition.zenithAngle;
@@ -183,7 +183,7 @@
     [self performSelector:@selector(sunPositionVectorForCoordinates:) withObject:location afterDelay:60];
 }
 
-- (STKSunPosition)sunPositionForCoordinate:(CLLocationCoordinate2D)coordinate{
+- (BRSunPosition)sunPositionForCoordinate:(CLLocationCoordinate2D)coordinate{
     
     // The algorithm below is based on the PSA algorithm
     // From http://www.psa.es/sdg/sunpos.htm
@@ -242,7 +242,7 @@
     if( dRightAscension < 0.0 ) dRightAscension = dRightAscension + (M_PI*2);
     dDeclination = asin( sin( dEclipticObliquity )*dSin_EclipticLongitude );
     
-	// Calculate local coordinates ( azimuth and zenith angle ) in degrees
+	// Calculate local coordinates (azimuth and zenith angle) in degrees
     double dGreenwichMeanSiderealTime;
     double dLocalMeanSiderealTime;
     double dLatitudeInRadians;
@@ -259,7 +259,7 @@
     dSin_Latitude = sin(dLatitudeInRadians);
     dCos_HourAngle= cos(dHourAngle);
     
-    STKSunPosition sunCoordinates;
+    BRSunPosition sunCoordinates;
     sunCoordinates.zenithAngle = (acos( dCos_Latitude*dCos_HourAngle*cos(dDeclination) + sin( dDeclination )*dSin_Latitude));
     dY = -sin(dHourAngle);
     dX = tan(dDeclination)*dCos_Latitude - dSin_Latitude*dCos_HourAngle;

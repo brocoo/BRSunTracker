@@ -1,21 +1,21 @@
 //
-//  STKSunTrackerViewController.m
+//  BRSunTrackerViewController.m
 //  Sun Tracker
 //
 //  Created by Julien Ducret on 03/02/2014.
 //  Copyright (c) 2014 Julien Ducret. All rights reserved.
 //
 
-#import "STKSunTrackerViewController.h"
-#import "STKSunTrackerView.h"
+#import "BRSunTrackerViewController.h"
+#import "BRSunTrackerView.h"
 
-@interface STKSunTrackerViewController ()
+@interface BRSunTrackerViewController () <BRSunTrackerViewDelegate>
 
-@property (weak, nonatomic) IBOutlet STKSunTrackerView    *sunTrackerView;
+@property (weak, nonatomic) IBOutlet BRSunTrackerView    *sunTrackerView;
 
 @end
 
-@implementation STKSunTrackerViewController
+@implementation BRSunTrackerViewController
 
 #pragma mark - UIViewController life cycle
 
@@ -36,6 +36,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    [_sunTrackerView setDisplayCameraPreview:YES];
+    [_sunTrackerView setDelegate:self];
+    
 //    [_sunTrackerView setSunView:({
 //        UIView *sunView = [[UIView alloc] init];
 //        [sunView setBounds:CGRectMake(0, 0, 100, 100)];
@@ -49,6 +52,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - BRSunTrackerViewDelegate methods
+
+- (void)sunTrackerViewGotFocus:(BRSunTrackerView *)sunTrackerView{
+    NSLog(@"The sun is aligned with the device.");
+}
+
+- (void)sunTrackerViewLostFocus:(BRSunTrackerView *)sunTrackerView{
+    NSLog(@"The sun is not aligned with the device anymore.");
 }
 
 @end

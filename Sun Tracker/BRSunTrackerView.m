@@ -1,26 +1,27 @@
 //
-//  STKSunTrackerView.m
+//  BRSunTrackerView.m
 //  Sun Tracker
 //
 //  Created by Julien Ducret on 03/02/2014.
 //  Copyright (c) 2014 Julien Ducret. All rights reserved.
 //
 
-#import "STKSunTrackerView.h"
+#import "BRSunTrackerView.h"
 #import <AVFoundation/AVFoundation.h>
+#import "BRSunTracker.h"
 
-@interface STKSunTrackerView () <STKSunTrackerDelegate>
+@interface BRSunTrackerView () <BRSunTrackerDelegate>
 
 @property (strong, nonatomic)   UIView                          *sunContainerView;
 @property (strong, nonatomic)   UIView                          *defaultSunView;
-@property (strong, nonatomic)   STKSunTracker                   *sunTracker;
+@property (strong, nonatomic)   BRSunTracker                   *sunTracker;
 @property (strong, nonatomic)   AVCaptureSession                *captureSession;
 @property (strong, nonatomic)   AVCaptureVideoPreviewLayer      *captureVideoPreviewLayer;
 @property (strong, nonatomic)   UIView                          *videoImagePreview;
 
 @end
 
-@implementation STKSunTrackerView
+@implementation BRSunTrackerView
 
 #pragma mark - UIView life cycle
 
@@ -34,14 +35,11 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    if (self){
-        [self initialize];
-        [self setDisplayCameraPreview:YES];
-        [self setShowDefaultSunView:YES];
-    }
-    return self;
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    [self initialize];
+    [self setDisplayCameraPreview:YES];
+    [self setShowDefaultSunView:YES];
 }
 
 #pragma mark - Custom setter
@@ -93,28 +91,31 @@
     [_sunContainerView addSubview:_defaultSunView];
     
     // Initialize the sun tracker
-    _sunTracker = [[STKSunTracker alloc] initWithScreenSize:self.bounds.size];
+    _sunTracker = [[BRSunTracker alloc] initWithScreenSize:self.bounds.size];
     [_sunTracker setDelegate:self];
-    _sunState = STKSunStateUnknown;
+    _sunState = BRSunStateUnknown;
 }
 
-#pragma mark - STKSunTrackerDelegate method
+#pragma mark - BRSunTrackerDelegate method
 
-- (void)sunTrackerVectorUpdated:(STKSunTrackingVector)vector{
+- (void)sunTrackerVectorUpdated:(BRSunTrackingVector)vector{
     
     CGPoint actualCenter = CGPointMake(vector.x - _sunContainerView.frame.size.width/2, vector.y - _sunContainerView.frame.size.height/2);
-    double distance = CGPointDistance(self.center, actualCenter);
+    double distance = CGPointDistance(CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)), actualCenter);
     
-    if (_sunState == STKSunStateGotFocus) {
+    if (_sunState == BRSunStateGotFocus) {
         [_defaultSunView.layer setBackgroundColor:[[UIColor redColor] CGColor]];
         
         // Unlock the sun from the center of the screen
         if (distance > UNLOCKING_DISTANCE){
-            _sunState = STKSunStateLostFocus;
+            _sunState = BRSunStateLostFocus;
             [UIView animateWithDuration:distance/ANIMATION_SPEED animations:^{
                 [_sunContainerView setCenter:actualCenter];
                 [_defaultSunView.layer setBackgroundColor:[[UIColor yellowColor] CGColor]];
             }];
+            if(_delegate && [_delegate respondsToSelector:@selector(sunTrackerViewLostFocus:)]){
+                [_delegate sunTrackerViewLostFocus:self];
+            }
         }
     }else{
         
@@ -123,11 +124,14 @@
         
         // Lock the sun in the center of the screen
         if (distance < LOCKING_DISTANCE) {
-            _sunState = STKSunStateGotFocus;
+            _sunState = BRSunStateGotFocus;
             [UIView animateWithDuration:distance/ANIMATION_SPEED animations:^{
-                [_sunContainerView setCenter:self.center];
+                [_sunContainerView setCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))];
                 [_defaultSunView.layer setBackgroundColor:[[UIColor greenColor] CGColor]];
             }];
+            if(_delegate && [_delegate respondsToSelector:@selector(sunTrackerViewGotFocus:)]){
+                [_delegate sunTrackerViewGotFocus:self];
+            }
         }else{
             [_sunContainerView setCenter:actualCenter];
         }
@@ -142,7 +146,7 @@
     [self insertSubview:_videoImagePreview atIndex:0];
     
 	_captureSession = [[AVCaptureSession alloc] init];
-	_captureSession.sessionPreset = AVCaptureSessionPresetMedium;
+	_captureSession.sessionPreset = AVCaptureSessionPreset640x480;
 	_captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
 	_captureVideoPreviewLayer.frame = _videoImagePreview.bounds;
 	[_videoImagePreview.layer addSublayer:_captureVideoPreviewLayer];

@@ -1,22 +1,22 @@
 //
-//  STKAppDelegate.m
+//  BRAppDelegate.m
 //  Sun Tracker
 //
 //  Created by Julien Ducret on 03/02/2014.
 //  Copyright (c) 2014 Julien Ducret. All rights reserved.
 //
 
-#import "STKAppDelegate.h"
-#import "STKSunTrackerViewController.h"
+#import "BRAppDelegate.h"
+#import "BRSunTrackerViewController.h"
 
-@implementation STKAppDelegate
+@implementation BRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    [self.window setRootViewController:[[STKSunTrackerViewController alloc] init]];
+    [self.window setRootViewController:[[BRSunTrackerViewController alloc] init]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

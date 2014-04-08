@@ -1,5 +1,5 @@
 //
-//  STKAppDelegate.h
+//  BRAppDelegate.h
 //  Sun Tracker
 //
 //  Created by Julien Ducret on 03/02/2014.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STKAppDelegate : UIResponder <UIApplicationDelegate>
+@interface BRAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

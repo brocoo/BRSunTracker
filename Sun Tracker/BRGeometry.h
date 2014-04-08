@@ -1,13 +1,13 @@
 //
-//  STKGeometry.h
+//  BRGeometry.h
 //  Sun Tracker
 //
 //  Created by Julien Ducret on 30/01/2014.
 //  Copyright (c) 2014 Julien Ducret. All rights reserved.
 //
 
-#ifndef SunTracker_STKGeometry_h
-#define SunTracker_STKGeometry_h
+#ifndef SunTracker_BRGeometry_h
+#define SunTracker_BRGeometry_h
 
 #import <CoreMotion/CoreMotion.h>
 
@@ -22,13 +22,13 @@
 typedef struct {
     CGFloat azimuth;
     CGFloat zenithAngle;
-} STKSunPosition;
+} BRSunPosition;
 
 typedef struct {
     CGFloat x;
     CGFloat y;
     CGFloat z;
-} STKSunTrackingVector;
+} BRSunTrackingVector;
 
 static inline CGPoint
 CGPointDifference(CGPoint a, CGPoint b){

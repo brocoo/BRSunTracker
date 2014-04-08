@@ -12,18 +12,18 @@
 		FAA1E52318A0335C00E90412 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA1E52218A0335C00E90412 /* UIKit.framework */; };
 		FAA1E52918A0335C00E90412 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E52718A0335C00E90412 /* InfoPlist.strings */; };
 		FAA1E52B18A0335C00E90412 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E52A18A0335C00E90412 /* main.m */; };
-		FAA1E52F18A0335C00E90412 /* STKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E52E18A0335C00E90412 /* STKAppDelegate.m */; };
+		FAA1E52F18A0335C00E90412 /* BRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E52E18A0335C00E90412 /* BRAppDelegate.m */; };
 		FAA1E53118A0335C00E90412 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E53018A0335C00E90412 /* Images.xcassets */; };
 		FAA1E53818A0335C00E90412 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA1E53718A0335C00E90412 /* XCTest.framework */; };
 		FAA1E53918A0335C00E90412 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA1E51E18A0335C00E90412 /* Foundation.framework */; };
 		FAA1E53A18A0335C00E90412 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA1E52218A0335C00E90412 /* UIKit.framework */; };
 		FAA1E54218A0335C00E90412 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E54018A0335C00E90412 /* InfoPlist.strings */; };
 		FAA1E54418A0335C00E90412 /* Sun_TrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E54318A0335C00E90412 /* Sun_TrackerTests.m */; };
-		FAA1E55418A033AF00E90412 /* STKSunTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E55218A033AF00E90412 /* STKSunTrackerViewController.m */; };
-		FAA1E55518A033AF00E90412 /* STKSunTrackerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E55318A033AF00E90412 /* STKSunTrackerViewController.xib */; };
-		FAA1E55818A033CF00E90412 /* STKSunTrackerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E55718A033CF00E90412 /* STKSunTrackerView.m */; };
-		FAA1E55E18A0356600E90412 /* STKSunTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E55D18A0356600E90412 /* STKSunTracker.m */; };
-		FAA1E56218A0358600E90412 /* STKGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E56118A0358600E90412 /* STKGeometry.m */; };
+		FAA1E55418A033AF00E90412 /* BRSunTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E55218A033AF00E90412 /* BRSunTrackerViewController.m */; };
+		FAA1E55518A033AF00E90412 /* BRSunTrackerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E55318A033AF00E90412 /* BRSunTrackerViewController.xib */; };
+		FAA1E55818A033CF00E90412 /* BRSunTrackerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E55718A033CF00E90412 /* BRSunTrackerView.m */; };
+		FAA1E55E18A0356600E90412 /* BRSunTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E55D18A0356600E90412 /* BRSunTracker.m */; };
+		FAA1E56218A0358600E90412 /* BRGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1E56118A0358600E90412 /* BRGeometry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,23 +45,23 @@
 		FAA1E52818A0335C00E90412 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAA1E52A18A0335C00E90412 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAA1E52C18A0335C00E90412 /* Sun Tracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sun Tracker-Prefix.pch"; sourceTree = "<group>"; };
-		FAA1E52D18A0335C00E90412 /* STKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STKAppDelegate.h; sourceTree = "<group>"; };
-		FAA1E52E18A0335C00E90412 /* STKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STKAppDelegate.m; sourceTree = "<group>"; };
+		FAA1E52D18A0335C00E90412 /* BRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppDelegate.h; sourceTree = "<group>"; };
+		FAA1E52E18A0335C00E90412 /* BRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppDelegate.m; sourceTree = "<group>"; };
 		FAA1E53018A0335C00E90412 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FAA1E53618A0335C00E90412 /* Sun TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sun TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA1E53718A0335C00E90412 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FAA1E53F18A0335C00E90412 /* Sun TrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sun TrackerTests-Info.plist"; sourceTree = "<group>"; };
 		FAA1E54118A0335C00E90412 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAA1E54318A0335C00E90412 /* Sun_TrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sun_TrackerTests.m; sourceTree = "<group>"; };
-		FAA1E55118A033AF00E90412 /* STKSunTrackerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKSunTrackerViewController.h; sourceTree = "<group>"; };
-		FAA1E55218A033AF00E90412 /* STKSunTrackerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKSunTrackerViewController.m; sourceTree = "<group>"; };
-		FAA1E55318A033AF00E90412 /* STKSunTrackerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STKSunTrackerViewController.xib; sourceTree = "<group>"; };
-		FAA1E55618A033CF00E90412 /* STKSunTrackerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKSunTrackerView.h; sourceTree = "<group>"; };
-		FAA1E55718A033CF00E90412 /* STKSunTrackerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKSunTrackerView.m; sourceTree = "<group>"; };
-		FAA1E55C18A0356600E90412 /* STKSunTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKSunTracker.h; sourceTree = "<group>"; };
-		FAA1E55D18A0356600E90412 /* STKSunTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKSunTracker.m; sourceTree = "<group>"; };
-		FAA1E56018A0358600E90412 /* STKGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKGeometry.h; sourceTree = "<group>"; };
-		FAA1E56118A0358600E90412 /* STKGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKGeometry.m; sourceTree = "<group>"; };
+		FAA1E55118A033AF00E90412 /* BRSunTrackerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSunTrackerViewController.h; sourceTree = "<group>"; };
+		FAA1E55218A033AF00E90412 /* BRSunTrackerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRSunTrackerViewController.m; sourceTree = "<group>"; };
+		FAA1E55318A033AF00E90412 /* BRSunTrackerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BRSunTrackerViewController.xib; sourceTree = "<group>"; };
+		FAA1E55618A033CF00E90412 /* BRSunTrackerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSunTrackerView.h; sourceTree = "<group>"; };
+		FAA1E55718A033CF00E90412 /* BRSunTrackerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRSunTrackerView.m; sourceTree = "<group>"; };
+		FAA1E55C18A0356600E90412 /* BRSunTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSunTracker.h; sourceTree = "<group>"; };
+		FAA1E55D18A0356600E90412 /* BRSunTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRSunTracker.m; sourceTree = "<group>"; };
+		FAA1E56018A0358600E90412 /* BRGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRGeometry.h; sourceTree = "<group>"; };
+		FAA1E56118A0358600E90412 /* BRGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRGeometry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA6DBBB418F1F246003A2FA1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAA1E55618A033CF00E90412 /* BRSunTrackerView.h */,
+				FAA1E55718A033CF00E90412 /* BRSunTrackerView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		FAA1E51218A0335C00E90412 = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +130,11 @@
 		FAA1E52418A0335C00E90412 /* Sun Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				FA6DBBB418F1F246003A2FA1 /* Views */,
 				FAA1E55F18A0357900E90412 /* Tools */,
-				FAA1E55A18A0354100E90412 /* Controllers */,
-				FAA1E54D18A0336E00E90412 /* View Controller */,
-				FAA1E52D18A0335C00E90412 /* STKAppDelegate.h */,
-				FAA1E52E18A0335C00E90412 /* STKAppDelegate.m */,
+				FAA1E54D18A0336E00E90412 /* View Controllers */,
+				FAA1E52D18A0335C00E90412 /* BRAppDelegate.h */,
+				FAA1E52E18A0335C00E90412 /* BRAppDelegate.m */,
 				FAA1E53018A0335C00E90412 /* Images.xcassets */,
 				FAA1E52518A0335C00E90412 /* Supporting Files */,
 			);
@@ -161,39 +170,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FAA1E54D18A0336E00E90412 /* View Controller */ = {
+		FAA1E54D18A0336E00E90412 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FAA1E55918A033D500E90412 /* Sun Tracker view */,
-				FAA1E55118A033AF00E90412 /* STKSunTrackerViewController.h */,
-				FAA1E55218A033AF00E90412 /* STKSunTrackerViewController.m */,
-				FAA1E55318A033AF00E90412 /* STKSunTrackerViewController.xib */,
+				FAA1E55118A033AF00E90412 /* BRSunTrackerViewController.h */,
+				FAA1E55218A033AF00E90412 /* BRSunTrackerViewController.m */,
+				FAA1E55318A033AF00E90412 /* BRSunTrackerViewController.xib */,
 			);
-			name = "View Controller";
-			sourceTree = "<group>";
-		};
-		FAA1E55918A033D500E90412 /* Sun Tracker view */ = {
-			isa = PBXGroup;
-			children = (
-				FAA1E55618A033CF00E90412 /* STKSunTrackerView.h */,
-				FAA1E55718A033CF00E90412 /* STKSunTrackerView.m */,
-			);
-			name = "Sun Tracker view";
-			sourceTree = "<group>";
-		};
-		FAA1E55A18A0354100E90412 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				FAA1E55B18A0355000E90412 /* Sun Tracker */,
-			);
-			name = Controllers;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		FAA1E55B18A0355000E90412 /* Sun Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				FAA1E55C18A0356600E90412 /* STKSunTracker.h */,
-				FAA1E55D18A0356600E90412 /* STKSunTracker.m */,
+				FAA1E55C18A0356600E90412 /* BRSunTracker.h */,
+				FAA1E55D18A0356600E90412 /* BRSunTracker.m */,
 			);
 			name = "Sun Tracker";
 			sourceTree = "<group>";
@@ -201,8 +192,9 @@
 		FAA1E55F18A0357900E90412 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				FAA1E56018A0358600E90412 /* STKGeometry.h */,
-				FAA1E56118A0358600E90412 /* STKGeometry.m */,
+				FAA1E55B18A0355000E90412 /* Sun Tracker */,
+				FAA1E56018A0358600E90412 /* BRGeometry.h */,
+				FAA1E56118A0358600E90412 /* BRGeometry.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -251,7 +243,7 @@
 		FAA1E51318A0335C00E90412 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = STK;
+				CLASSPREFIX = BR;
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					FAA1E53518A0335C00E90412 = {
@@ -284,7 +276,7 @@
 			files = (
 				FAA1E52918A0335C00E90412 /* InfoPlist.strings in Resources */,
 				FAA1E53118A0335C00E90412 /* Images.xcassets in Resources */,
-				FAA1E55518A033AF00E90412 /* STKSunTrackerViewController.xib in Resources */,
+				FAA1E55518A033AF00E90412 /* BRSunTrackerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,12 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA1E55E18A0356600E90412 /* STKSunTracker.m in Sources */,
+				FAA1E55E18A0356600E90412 /* BRSunTracker.m in Sources */,
 				FAA1E52B18A0335C00E90412 /* main.m in Sources */,
-				FAA1E55818A033CF00E90412 /* STKSunTrackerView.m in Sources */,
-				FAA1E55418A033AF00E90412 /* STKSunTrackerViewController.m in Sources */,
-				FAA1E56218A0358600E90412 /* STKGeometry.m in Sources */,
-				FAA1E52F18A0335C00E90412 /* STKAppDelegate.m in Sources */,
+				FAA1E55818A033CF00E90412 /* BRSunTrackerView.m in Sources */,
+				FAA1E55418A033AF00E90412 /* BRSunTrackerViewController.m in Sources */,
+				FAA1E56218A0358600E90412 /* BRGeometry.m in Sources */,
+				FAA1E52F18A0335C00E90412 /* BRAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

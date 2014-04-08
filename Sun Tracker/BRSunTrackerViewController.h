@@ -1,5 +1,5 @@
 //
-//  STKSunTrackerViewController.h
+//  BRSunTrackerViewController.h
 //  Sun Tracker
 //
 //  Created by Julien Ducret on 03/02/2014.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STKSunTrackerViewController : UIViewController
+@interface BRSunTrackerViewController : UIViewController
 
 @end

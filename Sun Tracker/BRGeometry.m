@@ -1,12 +1,12 @@
 //
-//  STKGeometry.m
+//  BRGeometry.m
 //  Sun Tracker
 //
 //  Created by Julien Ducret on 30/01/2014.
 //  Copyright (c) 2014 Julien Ducret. All rights reserved.
 //
 
-#import "STKGeometry.h"
+#import "BRGeometry.h"
 
 // Structures and functions implemented below are taken from the Apple augmented reality sample code pARk
 // https://developer.apple.com/library/ios/samplecode/pARk/Introduction/Intro.html
