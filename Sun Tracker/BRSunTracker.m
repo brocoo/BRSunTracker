@@ -8,7 +8,7 @@
 
 #import "BRSunTracker.h"
 #import <CoreMotion/CoreMotion.h>       // Gyroscope access
-#import <CoreLocation/CoreLocation.h>   // Location access
+#import <CoreLocation/CoreLocation.h>   // GPS Location access
 
 @interface BRSunTracker () <CLLocationManagerDelegate> {
     vec4f_t _sunPositionVector;
@@ -140,7 +140,6 @@
 }
 
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager{
-    
     if(!manager.heading) return YES;
     else if( manager.heading.headingAccuracy < 0 ) return YES;
     else if( manager.heading.headingAccuracy > 5 ) return YES;
@@ -162,20 +161,20 @@
     
     CLLocationCoordinate2D coordinates = location.coordinate;
     
-    // Compute spherical coordinates (azimuth & zenith angle) of the sun from location, time zone, date and current time
-    BRSunPosition sunPosition = [self sunPositionForCoordinate:coordinates];
+    // Compute spherical coordinates (azimuth & elevation angle) of the sun from location, time zone, date and current time
+    BRSunSphericalPosition sunPosition = [self sunPositionForCoordinate:coordinates];
     
-    // Translate the zenith angle from 'sun - Z axis(up)' to 'sun - XY axis(ground)'
-    sunPosition.zenithAngle = 90 - sunPosition.zenithAngle;
+    // Translate the elevation angle from 'sun - Z axis(up)' to 'sun - XY axis(ground)'
+    sunPosition.elevation = 90 - sunPosition.elevation;
     
     // Distance Earth-Sun (radius in Spherical coordinates)
     double radius = 1.0;
     
-    // Extract cartesian coordinates from azimuth and zenith angle
+    // Extract cartesian coordinates from azimuth and elevation angle
     // http://computitos.files.wordpress.com/2008/03/cartesian_spherical_transformation.pdf
-    _sunPositionVector[0] = radius * cos(DEGREES_TO_RADIANS(sunPosition.zenithAngle))*cos(DEGREES_TO_RADIANS(sunPosition.azimuth));
-    _sunPositionVector[1] = radius * cos(DEGREES_TO_RADIANS(sunPosition.zenithAngle))*sin(DEGREES_TO_RADIANS(sunPosition.azimuth));
-    _sunPositionVector[2] = radius * sin(DEGREES_TO_RADIANS(sunPosition.zenithAngle));
+    _sunPositionVector[0] = radius * cos(DEGREES_TO_RADIANS(sunPosition.elevation))*cos(DEGREES_TO_RADIANS(sunPosition.azimuth));
+    _sunPositionVector[1] = radius * cos(DEGREES_TO_RADIANS(sunPosition.elevation))*sin(DEGREES_TO_RADIANS(sunPosition.azimuth));
+    _sunPositionVector[2] = radius * sin(DEGREES_TO_RADIANS(sunPosition.elevation));
     _sunPositionVector[3] = 1.0;
     
     // The compass/gyroscope Y axis is inverted
@@ -187,7 +186,7 @@
     [self performSelector:@selector(sunPositionVectorForCoordinates:) withObject:location afterDelay:60];
 }
 
-- (BRSunPosition)sunPositionForCoordinate:(CLLocationCoordinate2D)coordinate{
+- (BRSunSphericalPosition)sunPositionForCoordinate:(CLLocationCoordinate2D)coordinate{
     
     // The algorithm below is based on the PSA algorithm
     // From http://www.psa.es/sdg/sunpos.htm
@@ -246,7 +245,7 @@
     if( dRightAscension < 0.0 ) dRightAscension = dRightAscension + (M_PI*2);
     dDeclination = asin( sin( dEclipticObliquity )*dSin_EclipticLongitude );
     
-	// Calculate local coordinates (azimuth and zenith angle) in degrees
+	// Calculate local coordinates (azimuth and elevation angle) in degrees
     double dGreenwichMeanSiderealTime;
     double dLocalMeanSiderealTime;
     double dLatitudeInRadians;
@@ -263,16 +262,16 @@
     dSin_Latitude = sin(dLatitudeInRadians);
     dCos_HourAngle= cos(dHourAngle);
     
-    BRSunPosition sunCoordinates;
-    sunCoordinates.zenithAngle = (acos( dCos_Latitude*dCos_HourAngle*cos(dDeclination) + sin( dDeclination )*dSin_Latitude));
+    BRSunSphericalPosition sunCoordinates;
+    sunCoordinates.elevation = (acos( dCos_Latitude*dCos_HourAngle*cos(dDeclination) + sin( dDeclination )*dSin_Latitude));
     dY = -sin(dHourAngle);
     dX = tan(dDeclination)*dCos_Latitude - dSin_Latitude*dCos_HourAngle;
     sunCoordinates.azimuth = atan2( dY, dX );
     if ( sunCoordinates.azimuth < 0.0 ) sunCoordinates.azimuth = sunCoordinates.azimuth + (M_PI*2);
     sunCoordinates.azimuth = sunCoordinates.azimuth/(M_PI/180);
     // Parallax Correction
-    dParallax=(6371.01/149597890)*sin(sunCoordinates.zenithAngle);
-    sunCoordinates.zenithAngle=(sunCoordinates.zenithAngle + dParallax)/(M_PI/180);
+    dParallax=(6371.01/149597890)*sin(sunCoordinates.elevation);
+    sunCoordinates.elevation = (sunCoordinates.elevation + dParallax)/(M_PI/180);
     
     return sunCoordinates;
 }

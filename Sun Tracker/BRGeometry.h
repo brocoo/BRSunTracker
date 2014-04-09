@@ -21,8 +21,8 @@
 
 typedef struct {
     CGFloat azimuth;
-    CGFloat zenithAngle;
-} BRSunPosition;
+    CGFloat elevation;
+} BRSunSphericalPosition;
 
 typedef struct {
     CGFloat x;
