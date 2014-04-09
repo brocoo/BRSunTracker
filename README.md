@@ -4,6 +4,8 @@ BRSunTracker is a set of classes using [Augmented Reality] that allow you to tra
 
 The sample app included displays a marker on a camera preview that follows the sun on the screen and snaps to the middle of the view once the phone is oriented towards it.
 
+![http://i.imgur.com/RyTVnY6.png](http://i.imgur.com/RyTVnY6.png)
+
 ## Installation
 
 BRSunTracker is available through [CocoaPods](http://cocoapods.org), to install
