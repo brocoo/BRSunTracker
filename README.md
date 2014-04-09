@@ -1,6 +1,6 @@
 # BRSunTracker
 
-BRSunTracker is a set of classes using Augmented Reality that allow you to track and display the position of the sun on your device screen, based on your current GPS location, the device gyroscope, the time and the date.
+BRSunTracker is a set of classes using [Augmented Reality] that allow you to track and display the position of the sun on your device screen, based on your current GPS location, the device gyroscope, the time and the date.
 
 The sample app included displays a marker on a camera preview that follows the sun on the screen and snaps to the middle of the view once the phone is oriented towards it.
 
@@ -83,6 +83,7 @@ Check out my app: [Spores](https://itunes.apple.com/us/app/spores/id718495353?l=
 
 BRFlabbyTable is under Apache licence, see the LICENCE file for more info.
 
+[Augmented Reality]:http://en.wikipedia.org/wiki/Augmented_reality
 [PSA Algorithm]:http://www.psa.es/sdg/sunpos.htm
 [pARk]:https://developer.apple.com/library/ios/samplecode/pARk/Introduction/Intro.html
 [Stack Overflow]:http://stackoverflow.com/questions/21246745/compare-device-3d-orientation-with-the-sun-position
