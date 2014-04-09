@@ -26,15 +26,15 @@
 
 #pragma mark - Initialization and life cycle
 
-- (id)init{
+- (instancetype)init{
     self = [super init];
     if (self) [self initialize];
     return self;
 }
 
-- (id)initWithScreenSize:(CGSize)screenSize{
+- (instancetype)initWithViewSize:(CGSize)viewSize{
     self = [self init];
-    if (self) [self setScreenSize:screenSize];
+    if (self) [self setViewSize:viewSize];
     return self;
 }
 
@@ -78,6 +78,10 @@
     [self.motionManager stopDeviceMotionUpdates];
 }
 
+- (void)restartServices{
+    [self initialize];
+}
+
 #pragma mark - Custom setters
 
 - (void)setDelegate:(id<BRSunTrackerDelegate>)delegate{
@@ -90,11 +94,11 @@
     }
 }
 
-- (void)setScreenSize:(CGSize)screenSize{
-    _screenSize = screenSize;
+- (void)setViewSize:(CGSize)viewSize{
+    _viewSize = viewSize;
     
     // Update the projection matrix
-    createProjectionMatrix(_projectionTransform, DEGREES_TO_RADIANS(60.0), screenSize.width/screenSize.height, 0.25f, 1000.0f);
+    createProjectionMatrix(_projectionTransform, DEGREES_TO_RADIANS(60.0), viewSize.width/viewSize.height, 0.25f, 1000.0f);
 }
 
 #pragma mark - Tracking vector update
@@ -120,8 +124,8 @@
     // Project the rotated sun coordinates on the screen
     // (z value indicates weither the sun is in front or behind)
     BRSunTrackingVector sunTrackingVector;
-    sunTrackingVector.x = ((projectedSunCoordinates[0] / projectedSunCoordinates[3] + 1.0f) * 0.5f) * _screenSize.width;
-    sunTrackingVector.y = _screenSize.height - _screenSize.height*((projectedSunCoordinates[1] / projectedSunCoordinates[3] + 1.0f) * 0.5f);
+    sunTrackingVector.x = ((projectedSunCoordinates[0] / projectedSunCoordinates[3] + 1.0f) * 0.5f) * _viewSize.width;
+    sunTrackingVector.y = _viewSize.height - _viewSize.height*((projectedSunCoordinates[1] / projectedSunCoordinates[3] + 1.0f) * 0.5f);
     sunTrackingVector.z = projectedSunCoordinates[2];
     
     if (_delegate && [_delegate respondsToSelector:@selector(sunTrackerVectorUpdated:)]) {

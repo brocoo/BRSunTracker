@@ -19,39 +19,11 @@
 
 #pragma mark - UIViewController life cycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     [_sunTrackerView setDisplayCameraPreview:YES];
     [_sunTrackerView setDelegate:self];
-    
-//    [_sunTrackerView setSunView:({
-//        UIView *sunView = [[UIView alloc] init];
-//        [sunView setBounds:CGRectMake(0, 0, 100, 100)];
-//        [sunView.layer setCornerRadius:50];
-//        [sunView.layer setBackgroundColor:[[UIColor greenColor] CGColor]];
-//        sunView;
-//    })];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - BRSunTrackerViewDelegate methods

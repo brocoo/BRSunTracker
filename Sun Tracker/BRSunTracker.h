@@ -16,9 +16,11 @@
 
 @interface BRSunTracker : NSObject
 
-@property (assign, nonatomic)   id<BRSunTrackerDelegate>   delegate;
-@property (assign, nonatomic)   CGSize                      screenSize;
+@property (assign, nonatomic)   id<BRSunTrackerDelegate>    delegate;
+@property (assign, nonatomic)   CGSize                      viewSize;
 
-- (id)initWithScreenSize:(CGSize)screenSize;
+- (instancetype)initWithViewSize:(CGSize)viewSize;
+- (void)stopServices;
+- (void)restartServices;
 
 @end

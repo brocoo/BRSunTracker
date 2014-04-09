@@ -7,14 +7,14 @@
 //
 
 #import "BRSunTrackerView.h"
-#import <AVFoundation/AVFoundation.h>
 #import "BRSunTracker.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface BRSunTrackerView () <BRSunTrackerDelegate>
 
 @property (strong, nonatomic)   UIView                          *sunContainerView;
 @property (strong, nonatomic)   UIView                          *defaultSunView;
-@property (strong, nonatomic)   BRSunTracker                   *sunTracker;
+@property (strong, nonatomic)   BRSunTracker                    *sunTracker;
 @property (strong, nonatomic)   AVCaptureSession                *captureSession;
 @property (strong, nonatomic)   AVCaptureVideoPreviewLayer      *captureVideoPreviewLayer;
 @property (strong, nonatomic)   UIView                          *videoImagePreview;
@@ -25,7 +25,7 @@
 
 #pragma mark - UIView life cycle
 
-- (id)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
         [self initialize];
@@ -70,7 +70,7 @@
 
 - (void)setBounds:(CGRect)bounds{
     [super setBounds:bounds];
-    if (_sunTracker) [_sunTracker setScreenSize:bounds.size];
+    if (_sunTracker) [_sunTracker setViewSize:bounds.size];
 }
 
 #pragma mark - Initialization
@@ -91,14 +91,17 @@
     [_sunContainerView addSubview:_defaultSunView];
     
     // Initialize the sun tracker
-    _sunTracker = [[BRSunTracker alloc] initWithScreenSize:self.bounds.size];
+    _sunTracker = [[BRSunTracker alloc] initWithViewSize:self.bounds.size];
     [_sunTracker setDelegate:self];
     _sunState = BRSunStateUnknown;
+    [_sunContainerView setAlpha:0.0];
 }
 
 #pragma mark - BRSunTrackerDelegate method
 
 - (void)sunTrackerVectorUpdated:(BRSunTrackingVector)vector{
+    
+    [_sunContainerView setAlpha:1.0];
     
     CGPoint actualCenter = CGPointMake(vector.x, vector.y);
     
@@ -167,6 +170,5 @@
 	[_captureVideoPreviewLayer removeFromSuperlayer];
     [_videoImagePreview removeFromSuperview];
 }
-
 
 @end
