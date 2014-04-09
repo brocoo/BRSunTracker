@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "BRSunTracker"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Augmented Reality library that tracks and displays the sun on the screen"
   s.description      = <<-DESC
                         A set of classes based on Augmented Reality that allow you to track and display the position of the sun in real time, using the device GPS location, Gyroscope orientation and the current time and date. The marker on the view snap to the middle once the device is oriented towards the sun.
