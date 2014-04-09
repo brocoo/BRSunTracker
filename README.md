@@ -57,7 +57,7 @@ You can enable or disable the camera and provide your own UIView as a marker by 
 
 ## How does it work?
 
-Here is a diagram explaining roughly the process of computing the sun 2D screen coordinates in BRSunTracker.
+A diagram explaining roughly the process of computing the sun 2D screen coordinates in BRSunTracker is shown below.
 All of this happens inside the `BRSunTracker` class.
 The gyroscope orientation data is currently sampled 60 times per second, the sun spherical coordinates are computed every minute or when the GPS location gets updated.
 
@@ -67,7 +67,7 @@ The gyroscope orientation data is currently sampled 60 times per second, the sun
 
 [pARk], Apple code sample showing a basic Augmented Reality implementation
 
-[PSA Algorithm], C++ class that computes the spherical coordinates of the sun based on the GPS coordinates, the time and date.
+[PSA Algorithm], C++ function that computes the spherical coordinates of the sun based on the GPS coordinates, the time and date.
 
 [Stack Overflow], My initial Stack Overflow post about how to compare the device orientation with the sun position.
 
