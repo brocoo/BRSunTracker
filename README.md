@@ -79,6 +79,8 @@ The gyroscope orientation data is currently sampled 60 times per second, the sun
 
 Thanks to Dan Marson who provided the GIF shown above.
 
+This feature was conceived and built for the "Piano Ombre" album-app concept for Frànçois and the Atlas Mountains, now available on the [App Store].
+
 ## Author
 
 Julien Ducret - <brocoo@gmail.com>
@@ -95,3 +97,5 @@ BRFlabbyTable is under Apache licence, see the LICENCE file for more info.
 [PSA Algorithm]:http://www.psa.es/sdg/sunpos.htm
 [pARk]:https://developer.apple.com/library/ios/samplecode/pARk/Introduction/Intro.html
 [Stack Overflow]:http://stackoverflow.com/questions/21246745/compare-device-3d-orientation-with-the-sun-position
+[App Store]:https://itunes.apple.com/gb/app/piano-ombre/id840099884?mt=8
+
