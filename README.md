@@ -77,6 +77,8 @@ The gyroscope orientation data is currently sampled 60 times per second, the sun
 
 [Stack Overflow], My initial Stack Overflow post about how to compare the device orientation with the sun position.
 
+Thanks to Dan Marson who provided the GIF shown above.
+
 ## Author
 
 Julien Ducret - <brocoo@gmail.com>
