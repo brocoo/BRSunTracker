@@ -68,7 +68,7 @@ The gyroscope orientation data is currently sampled 60 times per second, the sun
 
 ![http://i.imgur.com/aF1SeW5.png](http://i.imgur.com/aF1SeW5.png)
 
-## Sources and Acknowledgements
+## Sources and acknowledgements
 
 [pARk], Apple code sample showing a basic Augmented Reality implementation
 
