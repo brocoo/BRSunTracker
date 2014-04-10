@@ -8,6 +8,7 @@ BRSunTracker also works during the night, just aim at your feet to find to find 
 The sample app included displays a marker on a camera preview that follows the sun on the screen and snaps to the middle of the view once the phone is oriented towards it.
 
 ![http://i.imgur.com/RyTVnY6.png](http://i.imgur.com/RyTVnY6.png)
+![http://i.imgur.com/UbxsJs5.gif](http://i.imgur.com/UbxsJs5.gif)
 
 ## Installation
 
