@@ -12,7 +12,7 @@ The sample app included displays a marker on a camera preview that follows the s
 
 ## Installation
 
-(CocoaPods specs pull request still pending, for now just drag and drop the content of the Classes folderin your Xcode project)
+(CocoaPods specs pull request still pending, for now just drag and drop the content of the Classes folder in your Xcode project)
 BRSunTracker is available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
