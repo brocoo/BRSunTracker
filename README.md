@@ -2,7 +2,7 @@
 
 BRSunTracker is a set of classes using [Augmented Reality] that allow you to track and display the position of the sun on your device screen, based on your current GPS location, the device gyroscope, the time and the date.
 
-The position of the sun in the sky is computed via the PSA Algorithm, and its position on the screen uses the gyroscope and the device rotation matrix. (See "How does it work?" section below)
+The position of the sun in the sky is computed via the PSA Algorithm, and its position on the screen uses the device rotation matrix provided by the gyroscope. (See "How does it work?" section below)
 
 The sample app included displays a marker on a camera preview that follows the sun on the screen and snaps to the middle of the view once the phone is oriented towards it.
 
