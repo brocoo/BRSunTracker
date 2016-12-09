@@ -91,7 +91,7 @@ Check out my app: [Spores](https://itunes.apple.com/us/app/spores/id718495353?l=
 
 ## Licence
 
-BRFlabbyTable is under Apache licence, see the LICENCE file for more info.
+BRSunTracker is under Apache licence, see the LICENCE file for more info.
 
 [Augmented Reality]:http://en.wikipedia.org/wiki/Augmented_reality
 [PSA Algorithm]:http://www.psa.es/sdg/sunpos.htm
