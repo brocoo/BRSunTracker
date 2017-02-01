@@ -15,13 +15,15 @@
 
 @end
 
+
 @implementation BRSunTrackerViewController
 
 #pragma mark - UIViewController life cycle
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+
+    [self.sunTrackerView configureWithViewController:self];
     [_sunTrackerView setDisplayCameraPreview:YES];
     [_sunTrackerView setDelegate:self];
 }

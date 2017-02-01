@@ -31,5 +31,5 @@ typedef NS_ENUM(NSUInteger, BRSunState){
 @property (assign, nonatomic) BOOL displayCameraPreview;
 @property (assign, nonatomic) BOOL showDefaultSunView;
 @property (weak, nonatomic) id<BRSunTrackerViewDelegate> delegate;
-
+- (void)configureWithViewController: (UIViewController *) aViewController;
 @end
