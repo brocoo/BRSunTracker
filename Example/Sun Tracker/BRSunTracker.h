@@ -10,6 +10,8 @@
 
 @protocol BRSunTrackerDelegate <NSObject>
 
+@property (weak, nonatomic) UIViewController *viewController;
+
 - (void)sunTrackerVectorUpdated:(BRSunTrackingVector)vector;
 
 @end

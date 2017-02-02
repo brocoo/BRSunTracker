@@ -48,22 +48,76 @@
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.distanceFilter = kCLDistanceFilterNone;
     _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    [_locationManager startUpdatingLocation];
     [_locationManager setDelegate:self];
-    
+    switch ([CLLocationManager authorizationStatus]) {
+        case kCLAuthorizationStatusDenied: {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                           message:@"Location disallowed. Please update in Settings"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                                  }];
+            UIAlertAction* settingsAction = [UIAlertAction actionWithTitle:@"Settings"
+                                                                    style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction * action) {
+                                                                       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
+                                                                   }];
+            [alert addAction:defaultAction];
+            [alert addAction:settingsAction];
+            [self.delegate.viewController presentViewController:alert animated:YES completion:nil];
+            break;
+        }
+
+        case kCLAuthorizationStatusRestricted: {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                           message:@"Location is restricted. Parental Controls?"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                                  }];
+            [alert addAction:defaultAction];
+            [self.delegate.viewController presentViewController:alert animated:YES completion:nil];
+            break;
+        }
+            
+        case kCLAuthorizationStatusNotDetermined:
+            [self.locationManager requestWhenInUseAuthorization];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void) setupGyroscope {
     // Set up the motion manager (Gyroscope) and its callback
     _motionManager = [[CMMotionManager alloc] init];
     if ([_motionManager isGyroAvailable]) {
         [_motionManager setShowsDeviceMovementDisplay:YES];
         [_motionManager setDeviceMotionUpdateInterval:MOTION_UPDATE_INTERVAL];
-        
+
         __weak typeof(self) weakSelf = self;
         [_motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical toQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
             if (!error && weakSelf) [weakSelf deviceMotionUpdated:motion];
         }];
-        
-    }else{
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The gyroscope is not available on this device." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
+
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                       message:@"The gyroscope is not available on this device."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        [self.delegate.viewController presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [_locationManager startUpdatingLocation];
+        [self setupGyroscope];
     }
 }
 

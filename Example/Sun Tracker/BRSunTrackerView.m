@@ -23,21 +23,22 @@
 
 @implementation BRSunTrackerView
 
+@synthesize viewController;
+
 #pragma mark - UIView life cycle
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-        [self initialize];
+        [self initializeWithViewController:nil];
         [self setDisplayCameraPreview:YES];
         [self setShowDefaultSunView:YES];
     }
     return self;
 }
 
-- (void)awakeFromNib{
-    [super awakeFromNib];
-    [self initialize];
+- (void)configureWithViewController: (UIViewController *) aViewController {
+    [self initializeWithViewController: aViewController];
     [self setDisplayCameraPreview:YES];
     [self setShowDefaultSunView:YES];
 }
@@ -75,8 +76,8 @@
 
 #pragma mark - Initialization
 
-- (void)initialize{
-    
+- (void)initializeWithViewController: (UIViewController *) aViewController {
+    self.viewController = aViewController;
     // Set up the sun container view and default sun view
     // (Hide it until we receive sun positions)
     _sunContainerView = [[UIView alloc] initWithFrame:self.bounds];
@@ -158,7 +159,13 @@
 	NSError *error = nil;
 	AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
 	if (!input) {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                       message:error.localizedDescription
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        [self.viewController presentViewController:alert animated:YES completion:nil];
 	}else{
         [_captureSession addInput:input];
         [_captureSession startRunning];
